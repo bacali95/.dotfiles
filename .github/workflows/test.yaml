@@ -13,6 +13,5 @@ jobs:
 
       - name: Run install.sh
         run: |
-          cp -r . /tmp/dotfiles
           chmod +x install.sh
           sh install.sh
