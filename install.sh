@@ -39,7 +39,7 @@ do
 done
 
 echo "Creating symbolic links for config files..."
-for filename in "gitconfig" "zshrc" "ssh" "p10k.zsh"
+for filename in "gitconfig" "zshrc" "p10k.zsh"
 do
     rm -rf $HOME/.$filename
     ln -sf $HOME/.dotfiles/$filename $HOME/.$filename
