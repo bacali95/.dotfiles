@@ -1,0 +1,18 @@
+name: Test bootstrap
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run install.sh
+        run: |
+          cp -r . /tmp/dotfiles
+          chmod +x install.sh
+          sh install.sh
