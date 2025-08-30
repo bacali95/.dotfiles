@@ -10,13 +10,6 @@ echo "Installing useful tools..."
 runOrFail "sudo apt update"
 runOrFail "sudo apt install -y zsh git curl wget"
 
-echo "Copying config files..."
-if [ -d "$HOME/.dotfiles" ]; then
-    runOrFail "rm -rf $HOME/.dotfiles"
-fi
-
-runOrFail "cp -r ./config $HOME/.dotfiles"
-
 OH_MY_ZSH_DIRECTORY="$HOME/.oh-my-zsh"
 
 echo "Installing Oh-My-Zsh"
@@ -42,7 +35,7 @@ echo "Creating symbolic links for config files..."
 for filename in "gitconfig" "zshrc" "p10k.zsh"
 do
     rm -rf $HOME/.$filename
-    ln -sf $HOME/.dotfiles/$filename $HOME/.$filename
+    ln -sf ./$filename $HOME/.$filename
 done
 
 echo "Installing Volta..."
