@@ -35,7 +35,7 @@ echo "Creating symbolic links for config files..."
 for filename in "gitconfig" "zshrc" "p10k.zsh"
 do
     rm -rf $HOME/.$filename
-    ln -sf ./$filename $HOME/.$filename
+    ln -sf $(pwd)/config/$filename $HOME/.$filename
 done
 
 echo "Installing Volta..."
