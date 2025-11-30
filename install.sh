@@ -8,7 +8,7 @@ runOrFail() {
 
 echo "Installing useful tools..."
 runOrFail "sudo apt update"
-runOrFail "sudo apt install -y zsh git curl wget"
+runOrFail "sudo apt install -y zsh git curl wget nano"
 
 OH_MY_ZSH_DIRECTORY="$HOME/.oh-my-zsh"
 
