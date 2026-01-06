@@ -10,7 +10,6 @@ echo "Installing useful tools..."
 runOrFail "sudo apt update"
 runOrFail "sudo apt install -y zsh git curl wget nano"
 runOrFail "sudo chsh -s $(which zsh) $USER"
-runOrFail "exec zsh"
 
 OH_MY_ZSH_DIRECTORY="$HOME/.oh-my-zsh"
 
