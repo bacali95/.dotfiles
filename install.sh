@@ -39,6 +39,6 @@ do
 done
 
 echo "Installing Bun..."
-runOrFail "$(curl -fsSL https://bun.com/install | bash)"
+curl -fsSL https://bun.com/install | bash
 
 exit 0
