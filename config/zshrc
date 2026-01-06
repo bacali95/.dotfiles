@@ -76,9 +76,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git
          npm
          pip
+         bun
          yarn
          doctl
-         volta
          docker
          kubectl
          nx-completion
@@ -117,8 +117,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias docker-compose="docker compose"
-
 export HOST_IP=`hostname -I | awk '{print $1}'`
 export HOST="localhost"
 
@@ -126,6 +124,3 @@ export HOST="localhost"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"

@@ -38,9 +38,7 @@ do
     ln -sf $(pwd)/config/$filename $HOME/.$filename
 done
 
-echo "Installing Volta..."
-runOrFail "$(curl https://get.volta.sh | bash)"
-runOrFail "mkdir -p $OH_MY_ZSH_DIRECTORY/custom/plugins/volta"
-runOrFail "$HOME/.volta/bin/volta completions zsh -f -o $OH_MY_ZSH_DIRECTORY/custom/plugins/volta/_volta"
+echo "Installing Bun..."
+runOrFail "$(curl -fsSL https://bun.com/install | bash)"
 
 exit 0
