@@ -127,3 +127,11 @@ export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/coder/.bun/_bun" ] && source "/home/coder/.bun/_bun"
+
+# Task CLI completion (web-projects)
+fpath=("/home/coder/web-projects/scripts/task/completions" $fpath)
+autoload -Uz _task
+compdef _task bun
