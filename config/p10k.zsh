@@ -35,6 +35,7 @@
     # os_icon               # os identifier
     context                 # user@hostname
     dir                     # current directory
+    dotenv_project          # PROJECT var from nearest .env file
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
@@ -1557,6 +1558,31 @@
   typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION=
   # Custom prefix.
   typeset -g POWERLEVEL9K_TIME_PREFIX='%fat '
+
+  # Shows the PROJECT="..." value from the nearest .env file found by walking up from $PWD.
+  # Used in monorepos where a single root .env is rewritten per-app (e.g. by `bun task <app> prepare`)
+  # so the terminal always reflects which app the root .env is currently pointed at.
+  function prompt_dotenv_project() {
+    local dir="$PWD"
+    local env_file=""
+    while [[ "$dir" != "/" ]]; do
+      if [[ -f "$dir/.env" ]]; then
+        env_file="$dir/.env"
+        break
+      fi
+      dir="${dir:h}"
+    done
+    [[ -n "$env_file" ]] || return
+
+    local project
+    project=$(command grep -m1 -E '^PROJECT=' "$env_file" 2>/dev/null)
+    project="${project#PROJECT=}"
+    project="${project%$'\r'}"
+    project="${(Q)project}"  # strip surrounding quotes
+    [[ -n "$project" ]] || return
+
+    p10k segment -f 33 -t "[$project]"
+  }
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
